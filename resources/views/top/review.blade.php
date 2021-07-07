@@ -26,7 +26,7 @@
         <dt>メールアドレス</dt>
         <dd>{{$user->email}}</dd>
     </div>
-    <form action="/send" method="post">
+    <form action="send" method="post">
         <input type="hidden" name="date" value="<?= $date ?>">
         <input type="hidden" name="content" value="<?= $content ?>">
         <input type="hidden" name="email" value="<?= $user->email ?>">

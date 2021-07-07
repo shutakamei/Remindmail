@@ -10,7 +10,7 @@
 @section('content')
     <p>ここがサンプルページのコンテンツです。</p>
     <a href="/">トップページへ</a></br>
-    <a href="/login">ログインページへ</a>
+    <a href="login">ログインページへ</a>
 @endsection
 
 @section('footer')
