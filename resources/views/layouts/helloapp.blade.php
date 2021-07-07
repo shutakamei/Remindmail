@@ -18,8 +18,11 @@
     <div class="content">
     @yield('content')
     </div>
-    <div class="footer">
-    @yield('footer')
-    </div>
 </body>
+<footer>
+    @yield('footer')
+    <style>
+    footer { font-size: 6px; position: absolute; margin: 0; bottom: 0; padding: 0;}
+    </style>
+</footer>
 </html>

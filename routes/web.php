@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HelloController;
+use App\Http\Controllers\SampleController;
+use App\Http\Controllers\TopController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\SendController;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +19,20 @@ use App\Http\Controllers\HelloController;
 |
 */
 
-
+Route::get('/sample',[SampleController::class, 'index']);
 Route::get('/',[HelloController::class, 'index']);
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware('verified')->group(function() {
+
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::get('/top',[TopController::class, 'index']);
+
+    Route::get('/review',[ReviewController::class, 'confirm']);
+
+    //Route::get('/send',[SendController::class, 'confirm']);
+    Route::post('/send',[SendController::class, 'confirm']);
+
+});

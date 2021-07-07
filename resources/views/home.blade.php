@@ -15,6 +15,8 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    </br>
+                    <a href="/top">トップページへ</a>
                 </div>
             </div>
         </div>

@@ -13,6 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
+        RemindMail::class,
         //
     ];
 
@@ -24,6 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $schedule->command('command:send_remind_mail')->everyMinute();
         // $schedule->command('inspire')->hourly();
     }
 
