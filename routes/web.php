@@ -7,6 +7,7 @@ use App\Http\Controllers\TopController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SendController;
 use Illuminate\Support\Facades\Auth;
+use App\Console\RemindMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,20 +20,20 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/sample',[SampleController::class, 'index']);
+Route::get('/reminder/sample',[SampleController::class, 'index']);
 Route::get('/',[HelloController::class, 'index']);
 
 Auth::routes(['verify' => true]);
 
 Route::middleware('verified')->group(function() {
 
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/reminder/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-    Route::get('/top',[TopController::class, 'index']);
+    Route::get('/reminder/top',[TopController::class, 'index']);
 
-    Route::get('/review',[ReviewController::class, 'confirm']);
+    Route::get('/reminder/review',[ReviewController::class, 'confirm']);
 
     //Route::get('/send',[SendController::class, 'confirm']);
-    Route::post('/send',[SendController::class, 'confirm']);
+    Route::post('/reminder/send',[SendController::class, 'confirm']);
 
 });
