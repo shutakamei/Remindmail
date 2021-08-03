@@ -13,6 +13,13 @@ use Carbon\Carbon;
 
 class SendController extends Controller
 {
+    function index()
+    {
+        $reminds = Remind::get();
+
+        return view('reminder', compact('reminds'));
+    }
+
     public function confirm(Request $request){
     
         $user = Auth::user();

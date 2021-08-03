@@ -18,6 +18,7 @@
     <div class="content">
     @yield('content')
     </div>
+    <a href="top">TOPページへ</a>
 </body>
 <footer>
     @yield('footer')

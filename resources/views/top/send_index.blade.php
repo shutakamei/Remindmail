@@ -9,9 +9,6 @@
 
 @section('content')
     <p>リマインダーメールを予約しました。</p>
-    {{$when}}<br>
-    {{$now}}<br>
-    {{$date}}<br>
 @endsection
 
 @section('footer')

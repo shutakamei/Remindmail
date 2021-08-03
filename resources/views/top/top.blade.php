@@ -18,7 +18,7 @@
     <div class="content">
     @yield('content')
     </div>
-    <form action="/review">
+    <form action="review">
         <dt>日時</dt>
         <dd><input type="datetime-local" name="date" value=""></dd>
         <dt>件名</dt>

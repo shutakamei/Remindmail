@@ -43,13 +43,18 @@ class RemindMail extends Command
      */
     public function handle()
     {
-        $user = Auth::user();
-        $content = DB::table('reminds')->body;
-        $send_at = DB::table('reminds')->send_at;
-
-
-        if($send_at == Carbon::now()){
-            Mail::to($user->email)->send(new SendRemindMail($content));
+        $email = Auth::user('email');
+        $this->info('start');
+        $reminds = DB::table('reminds')
+                          ->where('send_at', Carbon::now()->format('Y-m-d H:i:00'))
+                          ->get();
+        foreach ($reminds as $remind) {
+            Mail::raw($remind->body . Carbon::now()->format('Y-m-d H:i:00'), function ($m) use($remind) {
+                $m->from(env('MAIL_USERNAME'));
+                $m->to($email)->subject('We Reminder. You recall.');
+            });
         }
+        $this->info(Carbon::now()->addSeconds(5)->format('Y-m-d H:m:00'));
+        $this->info('Complete');
     }
 }

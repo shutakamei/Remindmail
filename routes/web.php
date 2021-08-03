@@ -33,7 +33,7 @@ Route::middleware('verified')->group(function() {
 
     Route::get('/review',[ReviewController::class, 'confirm']);
 
-    //Route::get('/send',[SendController::class, 'confirm']);
     Route::post('/send',[SendController::class, 'confirm']);
+    Route::patch('/send/update',[SendController::class, 'index']);
 
 });
